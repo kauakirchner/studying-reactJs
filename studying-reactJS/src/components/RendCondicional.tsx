@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import LearnState from "./LearnState";
 
 //Renderização condicional
 const RendCondicional = () =>{
 
-    const [tituloEscondito, setTitulo] = useState(false)
-    const handleTitulo = () =>{
-        setTitulo(!tituloEscondito)
+    const [secretText, setText] = useState(false)
+    const handleSecretText = () =>{
+        setText(!secretText)
     }
+
     return (
         <div className="container">
-            {tituloEscondito && (
-                <h1>Título</h1>
+            <br />
+            {secretText &&(
+                <LearnState />
             )}
-            <button onClick={handleTitulo}>Clique</button>
+            <br />
+            <button onClick={handleSecretText}>Ver/Esconder</button>
         </div>
     )
 }
