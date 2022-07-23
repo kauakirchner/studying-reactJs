@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Form from './components/Form'
 import LearnState from './components/LearnState'
 import RendCondicional from './components/RendCondicional'
 
@@ -6,8 +7,8 @@ import RendCondicional from './components/RendCondicional'
 const  App = () => {
   return (
     <div className="App">
-      <LearnState />
       <RendCondicional />
+      <Form />
     </div>
   )
 }
