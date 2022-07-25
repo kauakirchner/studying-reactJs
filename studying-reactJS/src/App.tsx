@@ -1,14 +1,10 @@
-import { useState } from 'react'
-import Form from './components/Form'
-import LearnState from './components/LearnState'
-import RendCondicional from './components/RendCondicional'
-
+import NavBar from './components/navbar/NavBar'
+import MyRoutes from './routes/MyRoutes'
 
 const  App = () => {
   return (
     <div className="App">
-      <RendCondicional />
-      <Form />
+      <MyRoutes />
     </div>
   )
 }

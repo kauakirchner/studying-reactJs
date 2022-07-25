@@ -62,8 +62,15 @@ const Form = () => {
             </div>
             <br />
             <div>
+                <h3>Faça uma consulta na api via cep</h3>
                 <input type="passwoed" value={userCep} placeholder="Insira seu cep" onChange={event => setCep(event.target.value)} />
                 <button onClick={handleApiCep}>Consultar cep</button>
+                <br />
+                {userCep &&(
+                   <div>
+                    <span>Olhe o console</span>
+                   </div>
+                )}
                 {getUserFullAdress}
             </div>
         </div>
