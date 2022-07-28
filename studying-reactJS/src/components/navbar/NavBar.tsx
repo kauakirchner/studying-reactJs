@@ -1,14 +1,27 @@
-import { Link } from "react-router-dom";
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
+    const handleNavigate = (path: string) => {
+        return (event: MouseEvent<HTMLDivElement>) => {
+            navigate(path)
+        }
+    }
+
     return (
         <nav className="container">
             <div>
-                <Link to={'/condicionalRender'}>Condicional render</Link>
+                <div onClick={handleNavigate('/render')}>Condicional render</div>
             </div>
             <br />
             <div>
-                <Link to={'/'}>Learning useState</Link>
+                <div onClick={handleNavigate('/state')}>Learning useState</div>
+            </div>
+            <br />
+            <div>
+                <div onClick={handleNavigate('/callback')}>Learning callBack</div>
             </div>
         </nav>
     )
