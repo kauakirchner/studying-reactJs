@@ -1,9 +1,11 @@
-import MyRoutes from './routes/MyRoutes'
+import Routes from './routes/Routes'
+import NavBar from './components/navbar/NavBar'
 
 const  App = () => {
   return (
     <div className="App">
-      <MyRoutes />
+      {/* <NavBar /> */}
+      <Routes />
     </div>
   )
 }
