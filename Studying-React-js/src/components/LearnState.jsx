@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
-// Componente de formulário consumindo api viaCep
-const Form = () => {
+
+const LearnState = () => {
     const [userName, setName] = useState('')
     const [userEmail, setEmail] = useState('')
     const [userPassword, setPassword] = useState('')
@@ -77,4 +76,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default LearnState
