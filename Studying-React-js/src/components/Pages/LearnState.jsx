@@ -1,39 +1,51 @@
 import React, { useState } from "react";
-
+import { render } from "react-dom";
+import Button from '../Button'
 
 const LearnState = () => {
-    const [userName, setName] = useState('')
     const [userEmail, setEmail] = useState('')
-    const [userPassword, setPassword] = useState('')
+    const [userPassword, setPassword] = useState(null)
     const [confirmedPassword, setConfirmedPassword] = useState('')
     const [userCep, setCep] = useState('')
-    let [getUserFullAdress, setFullAddress] = useState([])
+    const [userFullAdress, setFullAddress] = useState([])
+    const [shouldShowMessage, setShouldShowMessge] = useState(false)
 
-    const setUserInfos = () => {
-        setName(userName);
+    const handleClickForm = () => {
         setPassword(userPassword);
         setEmail(userEmail);
         setConfirmedPassword(confirmedPassword);
+        setShouldShowMessge(true)
+    }
 
+    const isPasswordCorrect = () => {
+        return userPassword === confirmedPassword 
+    }
+
+    const renderPasswordMessage = () => {
+        if (!shouldShowMessage) {
+            return null
+        }
+
+        if (userPassword && isPasswordCorrect()) {
+          return  <p>Cadastro feito com sucesso</p> 
+        }
+
+        if (userPassword &&  confirmedPassword &&!isPasswordCorrect())  {
+          return  <p>Senhas não conferem</p>
+        }        
     }
 
     async function handleApiCep() {
         setCep(userCep)
         const url = `https://viacep.com.br/ws/${userCep}/json/`
         axios.get(url).then((response) => {
-            setFullAddress(getUserFullAdress)
-            getUserFullAdress = response.data
-            console.log(getUserFullAdress)
+            setFullAddress(response.data)
         })
     }
 
     return (
         <div className="container">
             <h1>Cadastre-se</h1>
-            <div className="column row">
-                <label htmlFor="">Nome</label>
-                <input type="text" value={userName} placeholder="Insira seu nome" onChange={event => setName(event.target.value)} />
-            </div>
             <br />
             <div className="column row">
                 <label htmlFor="">Email</label>
@@ -50,15 +62,9 @@ const LearnState = () => {
                 <input type="passwoed" value={confirmedPassword} placeholder="Confirme sua senha" onChange={event => setConfirmedPassword(event.target.value)} />
             </div>
             <br />
-            {userPassword !== confirmedPassword && (
-                <p>Senhas não conferem</p>
-            )}
-            {userPassword === confirmedPassword && (
-                <p>Cadastro feito com sucesso</p>
-            )}
-            <div>
-                <button className="btn-send" onClick={setUserInfos}>ENVIAR</button>
-            </div>
+            {renderPasswordMessage()}
+
+                <Button onClick={handleClickForm} text="Clique"/>
             <br />
             <div>
                 <h3>Faça uma consulta na api via cep</h3>
@@ -70,7 +76,7 @@ const LearnState = () => {
                     <span>Olhe o console</span>
                    </div>
                 )}
-                {getUserFullAdress}
+                {}
             </div>
         </div>
     )

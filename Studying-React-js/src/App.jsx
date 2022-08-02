@@ -1,5 +1,7 @@
 import Routes from './routes/Routes'
 import NavBar from './components/navbar/NavBar'
+import { Teste } from '@teste'
+Teste()
 
 const  App = () => {
   return (
