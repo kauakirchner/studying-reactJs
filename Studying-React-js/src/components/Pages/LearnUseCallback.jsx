@@ -1,7 +1,6 @@
 import React, {useCallback, useState, useEffect} from "react";
 
 // Memorizando a função handlePlus para que não se crie novas instâncias quando o botão for clicado.
-
 const LearnUseCallBack = () => {
     const [counter, setCounter] = useState(0)
 

@@ -16,7 +16,11 @@ const NavBar = () => {
             </div>
             <br />
             <div>
-                <button onClick={handleNavigate('/callback')}>Learning callBack</button>
+                <button onClick={handleNavigate('/callback')}>Learning useCallBack</button>
+            </div>
+            <br />
+            <div>
+                <button onClick={handleNavigate('/effect')}>Learning useEffect</button>
             </div>
         </nav>
     )
